@@ -28,3 +28,4 @@ npm run dev
 npm run build
 ```
 "# Vue-js-1" 
+"# Vue-js-2" 
