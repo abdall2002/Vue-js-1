@@ -3,24 +3,9 @@
         <app-header />
         <!-- <app-footer/> -->
         <div class="container">
-            <Cars />
-            <!-- {{ cars[2].model }} -->
-            <hr />
-            <!-- <button @click="updateCar">Change the brand</button> -->
-            <CarBrands>
-                <div>Content at the top</div>
-                <template v-slot:brands>
-                    <ul>
-                        <li v-for="(brand, index) in brands" :key="index">
-                            {{ brand }}
-                        </li>
-                    </ul>
-                </template>
-                <template v-slot:other>
-                    <div>Some other content</div>
-                </template>
-                <strong>Default slots</strong>
-            </CarBrands>
+            <Life 
+                v-if="showit" 
+            />
         </div>
     </div>
 </template>
@@ -28,27 +13,14 @@
 <script setup>
     // import { ref } from 'vue';
     // const name = ref('Francies');
-    import Cars from '@/components/Cars/index.vue'
-    import CarBrands from '@/components/Cars/brands.vue'
-    import { reactive, provide } from 'vue';
+    import Life from '@/components/Life/index.vue';
+    import { ref, reactive, provide } from 'vue';
     
-    const brands = reactive(['Mazda', 'Honda', 'Renault'])
+    const showit = ref(true);
 
-    const cars = reactive([
-        { model: 'F9', brand: 'Ferrari' },
-        { model: '911', brand: 'Porsche' },
-        { model: 'Fiesta', brand: 'Ford' }
-    ])
-
-
-    
-    const updateCar = () => {
-        cars[0].brand = 'fiat';
-    }
-provide('cars', {
-    cars,
-    updateCar
-})
+    setTimeout(() => {
+        showit.value = false;
+    }, 3000)
 </script>
 
 <style>
